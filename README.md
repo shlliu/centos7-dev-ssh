@@ -3,7 +3,7 @@ This repo is for dockerfile of dev env based on centos7
 
 # How to build
 ```
-docker build -t centos7-dev:1.0
+docker build -t centos7-dev:1.0 .
 ```
 
 # How to run
