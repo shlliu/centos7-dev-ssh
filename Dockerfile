@@ -8,6 +8,13 @@ RUN yum install -y tar gzip gcc vim wget screen net-tools python-pip git\
                    openssl openssh openssh-clients openssh-server
 # Install python models
 RUN pip install virtualenv
+RUN pip install -U requests
+RUN pip install -U robotframework
+RUN pip install -U robotframework-requests
+RUN pip install -U robotframework-pabot
+RUN pip install -U robotframework-sshlibrary
+RUN pip install -U robotframework-seleniumlibrary
+
 # Generate ssh key
 RUN ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key
 RUN ssh-keygen -q -N "" -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key
