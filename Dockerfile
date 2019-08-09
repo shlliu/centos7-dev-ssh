@@ -6,7 +6,7 @@ RUN rpm -ivh http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-relea
 # Install some softwares
 RUN yum install -y tar gzip gcc vim wget screen net-tools python-pip git\
                    openssl openssh openssh-clients openssh-server python36\
-                   python36-setuptools
+                   python36-setuptools java-1.8.0-openjdk*
 RUN easy_install-3.6 pip
 # Install python models
 RUN pip3 install virtualenv
@@ -25,7 +25,9 @@ RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_ed25519_key
 RUN sed -i "s/UsePAM.*/UsePAM no/g" /etc/ssh/sshd_config
 RUN sed -i "s/#UsePrivilegeSeparation.*/UsePrivilegeSeparation no/g" /etc/ssh/sshd_config
 # Create .ssh dir
-RUN mkdir -p /root/.ssh && chown root.root /root && chmod 700 /root/.ssh
+RUN mkdir -p /root/.ssh && chown root.root /root && chmod 700 /root/.ssh && touch /root/.ssh/known_hosts && chmod 644 /root/.ssh/known_hosts
+RUN ssh-keyscan -t rsa git.bitmain.com > /root/.ssh/known_hosts
+RUN git config --global http.sslVerify false
 # Create password for root
 RUN echo 'root:P@ssw0rd' | chpasswd
 # Expose 22 port
