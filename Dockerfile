@@ -8,6 +8,7 @@ RUN yum install -y tar gzip gcc vim wget screen net-tools python-pip git\
                    openssl openssh openssh-clients openssh-server python36\
                    python36-setuptools java-1.8.0-openjdk*
 RUN easy_install-3.6 pip
+RUN yum install -y Xvfb
 # Install python models
 RUN pip3 install virtualenv
 RUN pip3 install -U requests
