@@ -31,6 +31,9 @@ RUN ssh-keyscan -t rsa git.bitmain.com > /root/.ssh/known_hosts
 RUN git config --global http.sslVerify false
 # Create password for root
 RUN echo 'root:P@ssw0rd' | chpasswd
+# Update timezone 
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN echo "Asia/Shanghai" >> /etc/timezone
 # Expose 22 port
 EXPOSE 22
 # Start sshd
