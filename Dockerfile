@@ -6,7 +6,7 @@ RUN rpm -ivh http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-relea
 # Install some softwares
 RUN yum install -y tar gzip gcc vim wget screen net-tools python-pip git\
                    openssl openssh openssh-clients openssh-server python36\
-                   python36-setuptools java-1.8.0-openjdk*
+                   python36-setuptools java-1.8.0-openjdk* android-tools
 RUN easy_install-3.6 pip
 RUN yum install -y Xvfb
 # Install python models
